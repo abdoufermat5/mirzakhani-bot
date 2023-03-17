@@ -35,5 +35,14 @@ class OpenAIPrompt(Base):
         return f"<OpenAIResponse(id={self.id}, question='{self.question}', answer='{self.answer}', created_at='{self.created_at}')>"
 
 
+class DirectChat(Base):
+    __tablename__ = DATABASE_NAME + "2"
+
+    id = Column(Integer, primary_key=True)
+    question = Column(String)
+    answer = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
 # Create the tables in the database
 Base.metadata.create_all(engine)
